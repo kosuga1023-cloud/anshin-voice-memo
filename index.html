@@ -1,27 +1,62 @@
-安心つながるボイスメモ
-面談内容を適切に記録し、よりよいサービスと安心できる対話につなげます。
-
-1. 録音前の確認
-録音の目的
-サービス向上のための面談記録・内容確認、および利用者・ご家族・職員双方の安心と、カスタマーハラスメント等のトラブル防止のために録音します。録音データは関係者のみが取り扱い、施設の定める保管期間・管理方法に従って管理してください。
-
-録音の目的と取扱いについて説明し、面談参加者全員の同意を確認しました。
-面談名（任意・個人情報は必要最小限に）
-例：サービス担当者面談
-メモ（任意）
-面談の要点など。不要な個人情報は入力しないでください。
-
-※チェックだけで同意が成立するわけではありません。録音を断られた場合は録音せず、通常の記録方法を利用してください。
-
-2. 録音
-録音前の確認をしてください。
-● 録音開始
-■ 録音停止
-初回はブラウザからマイクの使用許可を求められます。iPhone・iPadではSafariでこのHTTPSサイトを開いてください。
-
-3. 保存について
-録音は自動でサーバーへ送信されません。停止後、音声を再生して「音声ファイルを保存」を押してください。保存先は端末やブラウザの設定によって異なります。
-
-重要：このページは録音ファイルを施設の共有保管庫へ自動送信しません。保存したファイルは施設のルールに従い、アクセス制限された場所へ移し、不要になったら削除してください。共有端末や公共の端末には録音を残さないでください。
-
-安心つながるボイスメモ｜録音は参加者全員への説明と同意確認後に行ってください。重要な記録は音声だけに頼らず、必要に応じて文書でも残してください。
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#176b57">
+<title>安心つながるボイスメモ</title>
+<style>
+:root{--g:#176b57;--p:#e8f5ef;--ink:#20302c;--line:#d5e2dc;--red:#a62828}
+*{box-sizing:border-box}body{margin:0;background:#f5f8f6;color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Yu Gothic",Meiryo,sans-serif;line-height:1.55}
+main{max-width:760px;margin:auto;padding:18px 14px 36px}header{background:var(--g);color:white;padding:22px 18px;border-radius:16px}
+h1{font-size:1.7rem;margin:0 0 6px}header p{margin:0}.card{background:white;border:1px solid var(--line);border-radius:15px;padding:18px;margin:14px 0}
+h2{font-size:1.15rem;margin:0 0 12px}.notice{background:#fff8e5;border:1px solid #ead69b;border-radius:10px;padding:12px}
+.consent{display:flex;gap:10px;align-items:flex-start;margin:14px 0;font-weight:700}input[type=checkbox]{width:24px;height:24px;flex-shrink:0;accent-color:var(--g)}
+.field{display:block;font-weight:700;margin:12px 0 5px}input[type=text],textarea{width:100%;font:inherit;padding:11px;border:1px solid #b8cbc2;border-radius:9px}textarea{min-height:80px}
+.buttons{display:flex;flex-wrap:wrap;gap:9px;margin:14px 0}button{font:inherit;font-weight:700;border:0;border-radius:10px;padding:12px 15px;min-height:48px;cursor:pointer}button:disabled{opacity:.45}
+.primary{background:var(--g);color:white}.secondary{background:var(--p);color:var(--g);border:1px solid #b8d9ca}.danger{background:#fff0f0;color:var(--red);border:1px solid #e7b8b8}
+.status{font-weight:700;padding:10px 12px;border-radius:9px;background:#eef2f0;margin:10px 0}.status.live{background:#fff0f0;color:var(--red)}
+small,.muted,footer{color:#5c6d67}audio{width:100%;margin-top:12px}.hidden{display:none!important}footer{font-size:.85rem;padding:8px}
+</style>
+</head>
+<body><main>
+<header><h1>安心つながるボイスメモ</h1><p>面談内容を適切に記録し、よりよいサービスと安心できる対話につなげます。</p></header>
+<section class="card">
+<h2>1. 録音前の確認</h2>
+<div class="notice"><strong>録音の目的</strong><br>サービス向上のための面談記録・内容確認、および利用者・ご家族・職員双方の安心と、カスタマーハラスメント等のトラブル防止のために録音します。録音データは関係者のみが取り扱い、施設の定める保管期間・管理方法に従って管理してください。</div>
+<label class="consent"><input id="consent" type="checkbox"><span>録音の目的と取扱いについて説明し、面談参加者全員の同意を確認しました。</span></label>
+<label class="field" for="meeting">面談名（任意・個人情報は必要最小限に）</label><input id="meeting" type="text" maxlength="100" placeholder="例：サービス担当者面談">
+<label class="field" for="notes">メモ（任意）</label><textarea id="notes" placeholder="面談の要点など。不要な個人情報は入力しないでください。"></textarea>
+<p class="muted">※チェックだけで同意が成立するわけではありません。録音を断られた場合は録音せず、通常の記録方法を利用してください。</p>
+</section>
+<section class="card"><h2>2. 録音</h2><div id="status" class="status" role="status" aria-live="polite">録音前の確認をしてください。</div>
+<div class="buttons"><button id="start" class="primary" disabled>● 録音開始</button><button id="stop" class="danger" disabled>■ 録音停止</button></div>
+<p class="muted">初回はブラウザからマイクの使用許可を求められます。iPhone・iPadではSafariでこのHTTPSサイトを開いてください。</p>
+<div id="preview" class="hidden"><strong>今回の録音</strong><audio id="audio" controls></audio><div class="buttons"><button id="download" class="secondary">音声ファイルを保存</button><button id="discard" class="danger">今回の録音を破棄</button></div></div>
+</section>
+<section class="card"><h2>3. 保存について</h2><p>録音は自動でサーバーへ送信されません。停止後、音声を再生して「音声ファイルを保存」を押してください。保存先は端末やブラウザの設定によって異なります。</p><p class="notice">重要：このページは録音ファイルを施設の共有保管庫へ自動送信しません。保存したファイルは施設のルールに従い、アクセス制限された場所へ移し、不要になったら削除してください。共有端末や公共の端末には録音を残さないでください。</p></section>
+<footer>安心つながるボイスメモ｜録音は参加者全員への説明と同意確認後に行ってください。重要な記録は音声だけに頼らず、必要に応じて文書でも残してください。</footer>
+</main>
+<script>
+(() => {
+const consent=document.getElementById('consent'),start=document.getElementById('start'),stop=document.getElementById('stop'),status=document.getElementById('status'),preview=document.getElementById('preview'),audio=document.getElementById('audio'),download=document.getElementById('download'),discard=document.getElementById('discard');
+let recorder=null,chunks=[],stream=null,blob=null,objectUrl=null,mimeType='';
+const setStatus=(s,live=false)=>{status.textContent=s;status.classList.toggle('live',live)};
+consent.addEventListener('change',()=>{start.disabled=!consent.checked||!!(recorder&&recorder.state==='recording');if(!consent.checked)setStatus('録音前の確認をしてください。');else setStatus('同意の確認ができました。録音を開始できます。')});
+start.addEventListener('click',async()=>{
+if(!consent.checked){setStatus('先に参加者全員の同意を確認してください。');return}
+if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia||!window.MediaRecorder){setStatus('このブラウザでは録音機能を利用できません。最新のSafariまたはChromeでHTTPSのページを開いてください。');return}
+try{
+stream=await navigator.mediaDevices.getUserMedia({audio:true});chunks=[];
+const options={};if(MediaRecorder.isTypeSupported('audio/mp4'))options.mimeType='audio/mp4';else if(MediaRecorder.isTypeSupported('audio/webm;codecs=opus'))options.mimeType='audio/webm;codecs=opus';else if(MediaRecorder.isTypeSupported('audio/webm'))options.mimeType='audio/webm';
+recorder=new MediaRecorder(stream,options);mimeType=recorder.mimeType||options.mimeType||'audio/webm';
+recorder.addEventListener('dataavailable',e=>{if(e.data&&e.data.size>0)chunks.push(e.data)});
+recorder.addEventListener('stop',()=>{blob=new Blob(chunks,{type:mimeType});if(objectUrl)URL.revokeObjectURL(objectUrl);objectUrl=URL.createObjectURL(blob);audio.src=objectUrl;preview.classList.remove('hidden');if(stream)stream.getTracks().forEach(t=>t.stop());stream=null;recorder=null;start.disabled=!consent.checked;stop.disabled=true;setStatus('録音を停止しました。音声を確認し、必要ならファイルを保存してください。')});
+recorder.start();start.disabled=true;stop.disabled=false;preview.classList.add('hidden');setStatus('録音中です。終了したら「録音停止」を押してください。',true)
+}catch(err){if(stream)stream.getTracks().forEach(t=>t.stop());stream=null;setStatus(err&&err.name==='NotAllowedError'?'マイクが許可されていません。ブラウザの設定でこのサイトのマイク使用を許可してください。':'マイクを開始できませんでした。HTTPSで開いていることと、マイクが他のアプリで使用中でないことを確認してください。');start.disabled=!consent.checked}
+});
+stop.addEventListener('click',()=>{if(recorder&&recorder.state!=='inactive'){stop.disabled=true;recorder.stop()}});
+download.addEventListener('click',()=>{if(!blob||!objectUrl)return;const raw=(document.getElementById('meeting').value||'voice-memo').trim().replace(/[\\/:*?"<>|]/g,'_').replace(/\s+/g,'_').slice(0,60);const ext=mimeType.includes('mp4')?'m4a':'webm';const a=document.createElement('a');a.href=objectUrl;a.download=raw+'_'+new Date().toISOString().replace(/[:.]/g,'-')+'.'+ext;document.body.appendChild(a);a.click();a.remove()});
+discard.addEventListener('click',()=>{audio.pause();audio.removeAttribute('src');audio.load();if(objectUrl)URL.revokeObjectURL(objectUrl);objectUrl=null;blob=null;chunks=[];preview.classList.add('hidden');setStatus('今回の録音を破棄しました。')});
+})();
+</script></body></html>
