@@ -1,62 +1,35 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#176b57">
-<title>安心つながるボイスメモ</title>
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#176b61"><title>安心つながるボイスメモ</title>
 <style>
-:root{--g:#176b57;--p:#e8f5ef;--ink:#20302c;--line:#d5e2dc;--red:#a62828}
-*{box-sizing:border-box}body{margin:0;background:#f5f8f6;color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Yu Gothic",Meiryo,sans-serif;line-height:1.55}
-main{max-width:760px;margin:auto;padding:18px 14px 36px}header{background:var(--g);color:white;padding:22px 18px;border-radius:16px}
-h1{font-size:1.7rem;margin:0 0 6px}header p{margin:0}.card{background:white;border:1px solid var(--line);border-radius:15px;padding:18px;margin:14px 0}
-h2{font-size:1.15rem;margin:0 0 12px}.notice{background:#fff8e5;border:1px solid #ead69b;border-radius:10px;padding:12px}
-.consent{display:flex;gap:10px;align-items:flex-start;margin:14px 0;font-weight:700}input[type=checkbox]{width:24px;height:24px;flex-shrink:0;accent-color:var(--g)}
-.field{display:block;font-weight:700;margin:12px 0 5px}input[type=text],textarea{width:100%;font:inherit;padding:11px;border:1px solid #b8cbc2;border-radius:9px}textarea{min-height:80px}
-.buttons{display:flex;flex-wrap:wrap;gap:9px;margin:14px 0}button{font:inherit;font-weight:700;border:0;border-radius:10px;padding:12px 15px;min-height:48px;cursor:pointer}button:disabled{opacity:.45}
-.primary{background:var(--g);color:white}.secondary{background:var(--p);color:var(--g);border:1px solid #b8d9ca}.danger{background:#fff0f0;color:var(--red);border:1px solid #e7b8b8}
-.status{font-weight:700;padding:10px 12px;border-radius:9px;background:#eef2f0;margin:10px 0}.status.live{background:#fff0f0;color:var(--red)}
-small,.muted,footer{color:#5c6d67}audio{width:100%;margin-top:12px}.hidden{display:none!important}footer{font-size:.85rem;padding:8px}
-</style>
-</head>
-<body><main>
-<header><h1>安心つながるボイスメモ</h1><p>面談内容を適切に記録し、よりよいサービスと安心できる対話につなげます。</p></header>
-<section class="card">
-<h2>1. 録音前の確認</h2>
-<div class="notice"><strong>録音の目的</strong><br>サービス向上のための面談記録・内容確認、および利用者・ご家族・職員双方の安心と、カスタマーハラスメント等のトラブル防止のために録音します。録音データは関係者のみが取り扱い、施設の定める保管期間・管理方法に従って管理してください。</div>
-<label class="consent"><input id="consent" type="checkbox"><span>録音の目的と取扱いについて説明し、面談参加者全員の同意を確認しました。</span></label>
-<label class="field" for="meeting">面談名（任意・個人情報は必要最小限に）</label><input id="meeting" type="text" maxlength="100" placeholder="例：サービス担当者面談">
-<label class="field" for="notes">メモ（任意）</label><textarea id="notes" placeholder="面談の要点など。不要な個人情報は入力しないでください。"></textarea>
-<p class="muted">※チェックだけで同意が成立するわけではありません。録音を断られた場合は録音せず、通常の記録方法を利用してください。</p>
-</section>
-<section class="card"><h2>2. 録音</h2><div id="status" class="status" role="status" aria-live="polite">録音前の確認をしてください。</div>
-<div class="buttons"><button id="start" class="primary" disabled>● 録音開始</button><button id="stop" class="danger" disabled>■ 録音停止</button></div>
-<p class="muted">初回はブラウザからマイクの使用許可を求められます。iPhone・iPadではSafariでこのHTTPSサイトを開いてください。</p>
-<div id="preview" class="hidden"><strong>今回の録音</strong><audio id="audio" controls></audio><div class="buttons"><button id="download" class="secondary">音声ファイルを保存</button><button id="discard" class="danger">今回の録音を破棄</button></div></div>
-</section>
-<section class="card"><h2>3. 保存について</h2><p>録音は自動でサーバーへ送信されません。停止後、音声を再生して「音声ファイルを保存」を押してください。保存先は端末やブラウザの設定によって異なります。</p><p class="notice">重要：このページは録音ファイルを施設の共有保管庫へ自動送信しません。保存したファイルは施設のルールに従い、アクセス制限された場所へ移し、不要になったら削除してください。共有端末や公共の端末には録音を残さないでください。</p></section>
-<footer>安心つながるボイスメモ｜録音は参加者全員への説明と同意確認後に行ってください。重要な記録は音声だけに頼らず、必要に応じて文書でも残してください。</footer>
-</main>
+:root{--g:#176b61;--p:#e8f4f1;--ink:#20302e;--muted:#62716e;--line:#d8e2df;--bg:#f4f8f7;--red:#b42318}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 -apple-system,BlinkMacSystemFont,"Yu Gothic",Meiryo,sans-serif}header{background:var(--g);color:white;padding:20px}header>div,main,footer{max-width:850px;margin:auto}h1{font-size:1.4rem;margin:0}header p{margin:4px 0 0}main{padding:18px 14px 40px}.panel{background:white;border:1px solid var(--line);border-radius:14px;padding:18px;margin-bottom:16px;box-shadow:0 2px 8px #173d3510}h2{font-size:1.1rem;color:var(--g);margin:0 0 12px}h3{font-size:1rem;margin:18px 0 8px}label{display:block;font-weight:650;margin:12px 0 5px}input,textarea{width:100%;font:inherit;padding:11px;border:1px solid #b9c9c5;border-radius:9px}textarea{min-height:78px}.hint{font-size:.88rem;color:var(--muted)}.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.purposes{display:grid;grid-template-columns:1fr 1fr;gap:9px}.purpose{background:white;border:1px solid var(--line);border-radius:10px;padding:12px;text-align:left;font:inherit}.purpose[aria-pressed=true]{border:2px solid var(--g);background:var(--p);padding:11px;font-weight:bold}.notice{background:#fff5d9;border:1px solid #ead79d;padding:12px;border-radius:10px}.check{display:flex;gap:10px;align-items:flex-start;font-weight:500}.check input{width:20px;flex:none;margin-top:4px}.person{border:1px solid var(--line);padding:12px;border-radius:10px;margin:10px 0}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}button{font:inherit;font-weight:bold;border:0;border-radius:10px;padding:12px 16px;cursor:pointer}.primary{background:var(--g);color:white}.secondary{background:#e8eeec}.danger{background:#fff0ef;color:var(--red);border:1px solid #efc2bd}button:disabled{opacity:.45}.status,.output{background:#edf3f1;border-radius:9px;padding:12px;margin-top:12px}.recording{background:#fff0ef;color:var(--red);font-weight:bold}audio{width:100%;margin-top:12px}.hidden{display:none!important}.output{white-space:pre-wrap;min-height:50px}footer{padding:0 14px 30px;color:var(--muted);font-size:.85rem}@media(max-width:560px){.grid,.purposes{grid-template-columns:1fr}.panel{padding:15px}}
+</style></head><body>
+<header><div><h1>安心つながるボイスメモ</h1><p>話し合いを、安心できる記録につなげるために</p></div></header><main>
+<section class="panel"><h2>1. 記録する目的を選択</h2><div class="purposes">
+<button class="purpose" data-p="利用者・家族面談" aria-pressed="true">👪 利用者・家族面談</button><button class="purpose" data-p="苦情・トラブル対応" aria-pressed="false">🤝 苦情・トラブル対応</button><button class="purpose" data-p="職員面談" aria-pressed="false">👤 職員面談</button><button class="purpose" data-p="会議・打ち合わせ" aria-pressed="false">🗣️ 会議・打ち合わせ</button></div>
+<div class="grid"><div><label for="date">実施日</label><input id="date" type="date"></div><div><label for="recorder">記録担当者</label><input id="recorder" placeholder="例：佐藤"></div></div>
+<label for="title">件名・対象者など（必要最小限）</label><input id="title" placeholder="例：サービス内容についての面談"><div id="specific"></div></section>
+<section class="panel"><h2>2. 録音前の説明と同意確認</h2><div class="notice">録音は任意です。目的、誰が聞くのか、保存場所・保存期間を参加者に説明してください。録音を希望されない場合も不利益なく、通常の面談記録・議事録で対応してください。途中で録音を止めることもできます。</div>
+<label for="why">今回の録音目的</label><textarea id="why">話し合いの内容を正確に確認し、必要な対応や約束を記録するため。</textarea><label for="listeners">録音を聞く予定の人・役職</label><input id="listeners" placeholder="例：担当者、管理者（必要な場合のみ）"><label for="storage">保存先・保存期間・削除予定</label><textarea id="storage" placeholder="施設の保存規程に沿って具体的に記載"></textarea>
+<h3>参加者ごとの確認</h3><p class="hint">参加者本人に説明し、本人が自分の意思で選択してください。代理人が関わる場合も、本人の意思・理解状況を確認し、施設規程に沿って対応してください。</p><div id="people"><div class="person"><label>参加者 1</label><input class="personName" placeholder="氏名または役割（必要最小限）"><label class="check"><input class="agree" type="checkbox">目的・聞く人・保存方法について説明を受け、録音に同意します。</label></div></div><div class="actions"><button class="secondary" id="add" type="button">＋ 参加者を追加</button></div>
+<label class="check"><input id="operator" type="checkbox">記録担当者として、録音の必要性・説明・同意状況を確認しました。</label><p class="hint">※チェック欄は確認の補助です。法的に有効な同意を保証するものではありません。</p></section>
+<section class="panel"><h2>3. 録音</h2><p class="hint">録音データは自動送信されません。保存後のファイルは端末に残るため、端末ロック、共有・バックアップ設定、誤送信、保存期間と削除を施設ルールで管理してください。</p><div class="actions"><button class="primary" id="start">● 録音開始</button><button class="secondary" id="stop" disabled>■ 録音停止</button></div><div id="status" class="status" role="status">録音していません</div><audio id="player" controls class="hidden"></audio><div class="actions"><button class="primary" id="saveAudio" disabled>音声ファイルを保存</button><button class="danger" id="discard" disabled>録音データを破棄</button></div><p class="hint">ブラウザ・端末によって対応形式が異なります。iPhone Safariではマイク使用を許可してください。</p></section>
+<section class="panel"><h2>4. メモ・決定事項・対応</h2><label for="memo">話し合いの要点・相手の意向</label><textarea id="memo" placeholder="事実と意見を分けて記録します。"></textarea><label for="decision">決定事項・確認したこと</label><textarea id="decision" placeholder="誰が何をするか、合意内容を記録します。"></textarea><div class="grid"><div><label for="owner">対応担当者</label><input id="owner" placeholder="例：相談員"></div><div><label for="deadline">対応期限</label><input id="deadline" type="date"></div></div><label for="follow">次回確認・未解決事項</label><textarea id="follow"></textarea><div class="actions"><button class="secondary" id="preview">記録内容をまとめる</button><button class="primary" id="saveNote" disabled>記録メモを保存（.txt）</button></div><div id="out" class="output">「記録内容をまとめる」を押すと入力内容を確認できます。</div></section>
+<section class="panel"><h2>5. 終了時の確認</h2><ul><li>録音を止め、必要な音声だけを保存したか</li><li>記録内容の誤りや事実・意見の混同がないか</li><li>保存先・閲覧者・保存期間を施設ルールに沿って管理するか</li><li>不要になった音声・端末上の一時データを適切に削除するか</li></ul><div class="notice">この試作版には職員別ログイン、アクセス権限、施設サーバーへの安全な保管、操作履歴、自動削除機能はありません。実データの本格運用前に、利用者情報と職員人事情報の分離を含む施設の個人情報保護規程・録音運用規程を整備してください。</div></section>
+</main><footer>安心つながるボイスメモ｜試作版・端末内処理を基本とした簡易ツール</footer>
 <script>
-(() => {
-const consent=document.getElementById('consent'),start=document.getElementById('start'),stop=document.getElementById('stop'),status=document.getElementById('status'),preview=document.getElementById('preview'),audio=document.getElementById('audio'),download=document.getElementById('download'),discard=document.getElementById('discard');
-let recorder=null,chunks=[],stream=null,blob=null,objectUrl=null,mimeType='';
-const setStatus=(s,live=false)=>{status.textContent=s;status.classList.toggle('live',live)};
-consent.addEventListener('change',()=>{start.disabled=!consent.checked||!!(recorder&&recorder.state==='recording');if(!consent.checked)setStatus('録音前の確認をしてください。');else setStatus('同意の確認ができました。録音を開始できます。')});
-start.addEventListener('click',async()=>{
-if(!consent.checked){setStatus('先に参加者全員の同意を確認してください。');return}
-if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia||!window.MediaRecorder){setStatus('このブラウザでは録音機能を利用できません。最新のSafariまたはChromeでHTTPSのページを開いてください。');return}
-try{
-stream=await navigator.mediaDevices.getUserMedia({audio:true});chunks=[];
-const options={};if(MediaRecorder.isTypeSupported('audio/mp4'))options.mimeType='audio/mp4';else if(MediaRecorder.isTypeSupported('audio/webm;codecs=opus'))options.mimeType='audio/webm;codecs=opus';else if(MediaRecorder.isTypeSupported('audio/webm'))options.mimeType='audio/webm';
-recorder=new MediaRecorder(stream,options);mimeType=recorder.mimeType||options.mimeType||'audio/webm';
-recorder.addEventListener('dataavailable',e=>{if(e.data&&e.data.size>0)chunks.push(e.data)});
-recorder.addEventListener('stop',()=>{blob=new Blob(chunks,{type:mimeType});if(objectUrl)URL.revokeObjectURL(objectUrl);objectUrl=URL.createObjectURL(blob);audio.src=objectUrl;preview.classList.remove('hidden');if(stream)stream.getTracks().forEach(t=>t.stop());stream=null;recorder=null;start.disabled=!consent.checked;stop.disabled=true;setStatus('録音を停止しました。音声を確認し、必要ならファイルを保存してください。')});
-recorder.start();start.disabled=true;stop.disabled=false;preview.classList.add('hidden');setStatus('録音中です。終了したら「録音停止」を押してください。',true)
-}catch(err){if(stream)stream.getTracks().forEach(t=>t.stop());stream=null;setStatus(err&&err.name==='NotAllowedError'?'マイクが許可されていません。ブラウザの設定でこのサイトのマイク使用を許可してください。':'マイクを開始できませんでした。HTTPSで開いていることと、マイクが他のアプリで使用中でないことを確認してください。');start.disabled=!consent.checked}
-});
-stop.addEventListener('click',()=>{if(recorder&&recorder.state!=='inactive'){stop.disabled=true;recorder.stop()}});
-download.addEventListener('click',()=>{if(!blob||!objectUrl)return;const raw=(document.getElementById('meeting').value||'voice-memo').trim().replace(/[\\/:*?"<>|]/g,'_').replace(/\s+/g,'_').slice(0,60);const ext=mimeType.includes('mp4')?'m4a':'webm';const a=document.createElement('a');a.href=objectUrl;a.download=raw+'_'+new Date().toISOString().replace(/[:.]/g,'-')+'.'+ext;document.body.appendChild(a);a.click();a.remove()});
-discard.addEventListener('click',()=>{audio.pause();audio.removeAttribute('src');audio.load();if(objectUrl)URL.revokeObjectURL(objectUrl);objectUrl=null;blob=null;chunks=[];preview.classList.add('hidden');setStatus('今回の録音を破棄しました。')});
-})();
+const $=id=>document.getElementById(id);let purpose='利用者・家族面談',mr=null,chunks=[],blob=null,url=null,stream=null;$('date').value=new Date().toISOString().slice(0,10);
+const templates={'利用者・家族面談':[['相談・面談のテーマ','サービス内容、生活状況、ご家族からの相談'],['本人の希望・意向','本人の言葉や意思を記録'],['家族等からの意見・希望','本人の意向と分けて記録'],['施設から説明した内容','説明した事実・資料など']],'苦情・トラブル対応':[['発生日時・場所','いつ、どこで起きたか'],['申出・発生内容','申出人の言葉と確認できた事実を分ける'],['初期対応・安全確認','その場の対応、本人の安全・健康状態'],['原因確認・再発防止','未確認事項は断定せず記録']],'職員面談':[['面談区分','定期面談、業務相談、職場環境など'],['本人の話・希望','本人の発言を尊重して記録'],['確認した業務上の事項','評価・推測と事実を区別'],['支援・配慮・合意事項','必要な支援、双方の確認事項']],'会議・打ち合わせ':[['会議名・議題','会議の名称と主な議題'],['出席者','氏名または役割'],['主な意見','意見の要点'],['決定事項','決定したこと、保留事項']]};
+function render(){ $('specific').innerHTML='<h3>用途別の情報</h3>'+templates[purpose].map((f,i)=>`<label>${f[0]}</label><textarea data-label="${f[0]}" placeholder="${f[1]}"></textarea>`).join('') }
+document.querySelectorAll('.purpose').forEach(b=>b.onclick=()=>{purpose=b.dataset.p;document.querySelectorAll('.purpose').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));render()});render();
+$('add').onclick=()=>{let n=$('people').children.length+1,d=document.createElement('div');d.className='person';d.innerHTML=`<label>参加者 ${n}</label><input class="personName" placeholder="氏名または役割（必要最小限）"><label class="check"><input class="agree" type="checkbox">目的・聞く人・保存方法について説明を受け、録音に同意します。</label>`;$('people').appendChild(d)};
+function status(s,rec=false){$('status').textContent=s;$('status').classList.toggle('recording',rec)}
+$('start').onclick=async()=>{let ps=[...document.querySelectorAll('.person')];if(!$('operator').checked||!ps.length||ps.some(p=>!p.querySelector('.personName').value.trim()||!p.querySelector('.agree').checked)){alert('記録担当者の確認と、参加者全員の氏名または役割・同意確認を入力してください。同意しない方がいる場合は録音せず、通常の記録で対応してください。');return}if(!navigator.mediaDevices?.getUserMedia||!window.MediaRecorder){alert('このブラウザでは録音できません。対応ブラウザをご利用ください。');return}try{stream=await navigator.mediaDevices.getUserMedia({audio:true});let mt=['audio/mp4','audio/webm;codecs=opus','audio/webm'].find(x=>MediaRecorder.isTypeSupported(x));mr=mt?new MediaRecorder(stream,{mimeType:mt}):new MediaRecorder(stream);chunks=[];blob=null;mr.ondataavailable=e=>{if(e.data?.size)chunks.push(e.data)};mr.onstop=()=>{blob=new Blob(chunks,{type:mr.mimeType||'audio/webm'});if(url)URL.revokeObjectURL(url);url=URL.createObjectURL(blob);$('player').src=url;$('player').classList.remove('hidden');$('saveAudio').disabled=false;$('discard').disabled=false;stream?.getTracks().forEach(t=>t.stop());stream=null;status('録音終了。再生して確認し、必要な場合のみ保存してください。')};mr.start();$('start').disabled=true;$('stop').disabled=false;status('録音中です。参加者に録音中であることが分かる状態を保ってください。',true)}catch(e){status('マイクを利用できません。ブラウザのマイク許可設定をご確認ください。')}};
+$('stop').onclick=()=>{if(mr&&mr.state!=='inactive')mr.stop();$('start').disabled=false;$('stop').disabled=true};
+$('saveAudio').onclick=()=>{if(!blob)return;let a=document.createElement('a');a.href=url;a.download=`安心ボイスメモ_${$('date').value}.${blob.type.includes('mp4')?'m4a':'webm'}`;a.click()};
+$('discard').onclick=()=>{if(!confirm('画面上の録音データを破棄します。端末に保存済みのファイルは別途削除してください。'))return;$('player').pause();$('player').removeAttribute('src');$('player').classList.add('hidden');if(url)URL.revokeObjectURL(url);url=null;blob=null;chunks=[];$('saveAudio').disabled=$('discard').disabled=true;status('画面上の録音データを破棄しました。保存済みファイルは別途削除してください。')};
+function note(){let specific=[...$('specific').querySelectorAll('textarea')].map(t=>`${t.dataset.label}\n${t.value||'（未入力）'}`).join('\n\n'),people=[...document.querySelectorAll('.person')].map(p=>`${p.querySelector('.personName').value||'未記入'}：${p.querySelector('.agree').checked?'同意確認済み':'同意未確認'}`).join('\n');return `安心つながるボイスメモ 記録\n用途：${purpose}\n実施日：${$('date').value}\n記録担当者：${$('recorder').value}\n件名：${$('title').value}\n\n【用途別情報】\n${specific}\n\n【録音前説明】\n目的：${$('why').value}\n聞く予定の人：${$('listeners').value}\n保存先・保存期間：${$('storage').value}\n参加者の同意確認：\n${people}\n\n【話し合いの要点】\n${$('memo').value}\n\n【決定事項】\n${$('decision').value}\n対応担当者：${$('owner').value}\n対応期限：${$('deadline').value}\n次回確認・未解決事項：\n${$('follow').value}\n\n※関係者が内容を確認し、施設の正式な記録・保存ルールに従って管理してください。\n`}
+$('preview').onclick=()=>{$('out').textContent=note();$('saveNote').disabled=false};
+$('saveNote').onclick=()=>{let u=URL.createObjectURL(new Blob([note()],{type:'text/plain;charset=utf-8'})),a=document.createElement('a');a.href=u;a.download=`安心ボイスメモ_記録_${$('date').value}.txt`;a.click();URL.revokeObjectURL(u)};
+window.onbeforeunload=()=>{if(stream)stream.getTracks().forEach(t=>t.stop());if(url)URL.revokeObjectURL(url)};
 </script></body></html>
